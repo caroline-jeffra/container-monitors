@@ -60,7 +60,6 @@ services:
     command: -config.file=/etc/loki/local-config.yaml
     volumes:
       - ./loki-config.yaml:/etc/loki/local-config.yaml
-      - ./bin/sh/loki-entrypoint.sh:/usr/bin/loki-entrypoint.sh
       - ./loki/tsdb/:/loki/tsdb/
       - ./loki/chunks/:/loki/chunks/
     networks:
