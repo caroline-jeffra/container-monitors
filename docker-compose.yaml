@@ -23,7 +23,7 @@ services:
     user: root
     privileged: true
     volumes:
-      - ./prometheus-scrape-config.yaml:/etc/prometheus/prometheus.yml
+      - ./prometheus-config.yaml:/etc/prometheus/prometheus.yml
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - "9090:9090"
