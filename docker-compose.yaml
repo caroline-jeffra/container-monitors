@@ -91,6 +91,19 @@ services:
     networks:
       - container-monitors_default
 
+  pyroscope:
+    image: pyroscope/pyroscope:latest
+    ports:
+      - 4040:4040
+    environment:
+      - PYROSCOPE_SERVER_API_BIND_ADDR=:4040
+      - PYROSCOPE_LOG_LEVEL=debug
+      - PYROSCOPE_STORAGE_PATH=/tmp/pyroscope
+      - PYROSCOPE_STORAGE_RETENTION=24h
+    command: server
+    networks:
+      - container-monitors_default
+
 networks:
   container-monitors_default:
     driver: bridge
