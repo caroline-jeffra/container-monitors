@@ -1,0 +1,25 @@
+server:
+  http_listen_port: 3200
+
+ingester:
+  lifecycler:
+    ring:
+      kvstore:
+        store: inmemory
+      replication_factor: 1
+  trace_idle_period: 5m
+  max_block_duration: 5m
+  max_block_bytes: 1_048_576
+
+compactor:
+  compaction:
+    block_retention: 24h
+
+storage:
+  trace:
+    backend: local
+    local:
+      path: /var/tempo/traces
+
+memberlist:
+  abort_if_cluster_join_fails: false
