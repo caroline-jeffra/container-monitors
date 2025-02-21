@@ -19,7 +19,7 @@ directory in your local system. From a terminal in that
 directory, run the following:
 
 ```
-docker-compose up
+docker-compose up -d
 ```
 
 This will start the containers and create the connections needed 
@@ -32,11 +32,19 @@ If these two data sources are not present, further configuration
 may be needed. If the data sources are present, navigate to 
 Dashboards to view the dashboard which has been provisioned: 
 Test Dashboard. This dashboard presents consolidated logs across 
-all active containers. 
+all active containers and was originally configured for Watson. 
+In order to modify this for other projects, you will need to first
+make a copy of the Test Dashboard and then edit the panel showing
+the consolidated logs. In the field where Watson containers are listed,
+enter the values of all of the containers you wish to compare. If
+you regularly work on multiple projects, it is recommended that you
+make a copy of the Test Dashboard for each of these projects and
+list the necessary containers per project. 
 
 If you regularly run containers from multiple projects, it is a 
 good idea to pause or stop any containers which aren't essential
-to monitoring. It is possible to further customize the project's 
+to monitoring - try to monitor the containers of only one project 
+at a time. It is possible to further customize the project's 
 configuration to your own needs if this is not possible, 
 however. 
 
