@@ -7,8 +7,16 @@ this to require minimal or no modification to the containers being monitored.
 
 ## Getting Started
 
-To begin, pull the code into a dedicated directory in your local
- system. From a terminal in that directory, run the following:
+To begin, you'll need to add the Loki plugin to your installed 
+version of Docker. From any directory, run the following:
+
+```
+docker plugin install grafana/loki-docker-driver:latest --alias loki --grant-all-permissions
+```
+
+Once that is complete, pull the container code into a dedicated 
+directory in your local system. From a terminal in that 
+directory, run the following:
 
 ```
 docker-compose up
