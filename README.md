@@ -15,11 +15,25 @@ docker plugin install grafana/loki-docker-driver:latest --alias loki --grant-all
 ```
 
 Once that is complete, pull the container code into a dedicated 
-directory in your local system. From a terminal in that 
-directory, run the following:
+directory in your local system. 
+
+```
+git clone https://github.com/<your-org>/container-monitors.git
+```
+
+Once the code is cloned, spin up the containers from the new `container-monitors`
+directory:
 
 ```
 docker-compose up -d
+```
+
+In some cases, the newer command of `docker compose` will work and 
+`docker-compose` will not, depending on your configuration. In this
+case, use 
+
+```
+docker compose up -d
 ```
 
 This will start the containers and create the connections needed 
