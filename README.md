@@ -1,9 +1,6 @@
 # Container Monitors
 
-This project is a set of docker containers which should act as a standalone 
-setup for monitoring the performance of any other docker containers currently 
-running on your local system. It's still a work in progress, but the aim is for
-this to require minimal or no modification to the containers being monitored. 
+Drop-in Grafana, Loki, Promtail and Prometheus stack for monitoring Docker containers locally. Data sources and dashboards provisioned as code.
 
 ## Getting Started
 
