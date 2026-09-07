@@ -1,1 +1,8 @@
 /tempo/traces/*
+
+# Loki runtime data — directories are kept via .gitkeep
+loki/**/*
+!loki/**/.gitkeep
+
+# macOS
+.DS_Store
