@@ -77,10 +77,7 @@ services:
       -log.level=debug
     networks: 
       - container-monitors_default
-      - watson_default-network
 
 networks:
   container-monitors_default:
     driver: bridge
-  watson_default-network:
-    external: true
