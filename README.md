@@ -4,60 +4,30 @@ Drop-in Grafana, Loki, Promtail and Prometheus stack for monitoring Docker conta
 
 ## Getting Started
 
-To begin, you'll need to add the Loki plugin to your installed 
-version of Docker. From any directory, run the following:
+To begin, you'll need to add the Loki plugin to your installed version of Docker. From any directory, run the following:
 
 ```
 docker plugin install grafana/loki-docker-driver:latest --alias loki --grant-all-permissions
 ```
 
-Once that is complete, pull the container code into a dedicated 
-directory in your local system. 
-
-```
-git clone https://github.com/<your-org>/container-monitors.git
-```
-
-Once the code is cloned, spin up the containers from the new `container-monitors`
+Once that is complete, clone this repo locally. Then spin up the containers from the `container-monitors`
 directory:
 
 ```
 docker-compose up -d
 ```
 
-In some cases, the newer command of `docker compose` will work and 
-`docker-compose` will not, depending on your configuration. In this
-case, use 
+or
 
 ```
 docker compose up -d
 ```
 
-This will start the containers and create the connections needed 
-to process the container logs and metrics, which is handled by 
-[Grafana](https://grafana.com/docs/grafana/latest/). Your 
-Grafana admin space is available at http://localhost:9100. 
-Navigating to Connections>Data Sources should show you that two 
-data sources have already been provisioned: Loki and Prometheus. 
-If these two data sources are not present, further configuration
-may be needed. If the data sources are present, navigate to 
-Dashboards to view the dashboard which has been provisioned: 
-Test Dashboard. This dashboard presents consolidated logs across 
-all active containers and was originally configured for Watson. 
-In order to modify this for other projects, you will need to first
-make a copy of the Test Dashboard and then edit the panel showing
-the consolidated logs. In the field where Watson containers are listed,
-enter the values of all of the containers you wish to compare. If
-you regularly work on multiple projects, it is recommended that you
-make a copy of the Test Dashboard for each of these projects and
-list the necessary containers per project. 
+This will start the containers and create the connections needed to process the container logs and metrics, which is handled by [Grafana](https://grafana.com/docs/grafana/latest/). Your Grafana admin space is available at http://localhost:9100. Navigating to Connections>Data Sources should show you that two data sources have already been provisioned: Loki and Prometheus. If these two data sources are not present, further configuration may be needed. If the data sources are present, navigate to Dashboards to view the dashboard which has been provisioned: Test Dashboard. This dashboard presents consolidated logs across all active containers. 
 
-If you regularly run containers from multiple projects, it is a 
-good idea to pause or stop any containers which aren't essential
-to monitoring - try to monitor the containers of only one project 
-at a time. It is possible to further customize the project's 
-configuration to your own needs if this is not possible, 
-however. 
+In order to modify this for other projects, you will need to first make a copy of the Test Dashboard and then edit the panel showing the consolidated logs. Enter the values of all of the containers you wish to compare. If you regularly work on multiple projects, it is recommended that you make a copy of the Test Dashboard for each of these projects and list the necessary containers per project. 
+
+If you regularly run containers from multiple projects, it is a good idea to pause or stop any containers which aren't essential to monitoring - try to monitor the containers of only one project at a time. It is possible to further customize the project's configuration to your own needs if this is not possible, however. 
 
 ## Troubleshooting
 
