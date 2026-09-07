@@ -16,10 +16,19 @@ scrape_configs:
       - host: unix:///var/run/docker.sock
         refresh_interval: 5s
     relabel_configs:
+      # Drop this stack's own containers so the monitors don't monitor themselves.
+      # Matches on the compose project label rather than container names, so it keeps
+      # working when services are added or removed. NOTE: the project name derives from
+      # this directory's name — rename the directory and this regex must change too.
+      - source_labels: [__meta_docker_container_label_com_docker_compose_project]
+        regex: 'container-monitors'
+        action: drop
       - source_labels: [__meta_docker_container_name]
         target_label: container_name
-      - source_labels: [__meta_docker_container_label_com_docker_swarm_service]
-        target_label: swarm_service
-      - source_labels: [__meta_docker_container_name]
-        regex: '^/container-monitors-(tempo|promtail|loki|grafana|prometheus|cadvisor)-\d+$'
-        action: drop
+      # compose_project / compose_service drive the dashboard's template variables.
+      # Only these two labels are promoted: com.docker.compose.project.working_dir and
+      # .config_files hold absolute host paths and must not reach the log index.
+      - source_labels: [__meta_docker_container_label_com_docker_compose_project]
+        target_label: compose_project
+      - source_labels: [__meta_docker_container_label_com_docker_compose_service]
+        target_label: compose_service
